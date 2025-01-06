@@ -51,7 +51,7 @@ const Discover = () => {
               key={item.id}
               className={`bg-white flex items-center justify-between p-4 ${
                 index !== discoverItems.length - 1 ? "border-b border-gray-100" : ""
-              }`}
+              } cursor-pointer`}
               onClick={() => item.link && navigate(item.link)}
             >
               <div className="flex items-center space-x-4">
