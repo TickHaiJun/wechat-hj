@@ -5,10 +5,10 @@ const Navigation = () => {
   const location = useLocation();
   
   const tabs = [
-    { name: "WeChat", icon: MessageCircle, path: "/" },
-    { name: "Contacts", icon: Users, path: "/contacts" },
-    { name: "Discover", icon: Compass, path: "/discover" },
-    { name: "Me", icon: User, path: "/me" },
+    { name: "微信", icon: MessageCircle, path: "/" },
+    { name: "通讯录", icon: Users, path: "/contacts" },
+    { name: "发现", icon: Compass, path: "/discover", hasNotification: true },
+    { name: "我", icon: User, path: "/me" },
   ];
 
   return (
@@ -20,12 +20,15 @@ const Navigation = () => {
             <Link
               key={tab.name}
               to={tab.path}
-              className={`flex flex-col items-center space-y-1 ${
+              className={`flex flex-col items-center space-y-1 relative ${
                 isActive ? "text-wechat-primary" : "text-gray-500"
               }`}
             >
               <tab.icon className="w-6 h-6" />
               <span className="text-xs">{tab.name}</span>
+              {tab.hasNotification && (
+                <div className="absolute -top-1 right-0 w-2 h-2 bg-red-500 rounded-full" />
+              )}
             </Link>
           );
         })}
